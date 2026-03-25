@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, interval, switchMap, startWith, takeUntil, Subject } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 export interface EfectividadFilter {
   date_from:   string | null;
@@ -12,7 +13,7 @@ export interface EfectividadFilter {
 @Injectable({ providedIn: 'root' })
 export class EfectividadService {
 
-  private api     = 'http://localhost:8000/api/activities/dashboard';
+  private api = `${environment.apiUrl}/activities/dashboard`;
   private POLL_MS = 10000;
 
   private filters$ = new BehaviorSubject<EfectividadFilter>({
@@ -131,10 +132,10 @@ export class EfectividadService {
   }
 
   getOperators() {
-    return this.http.get<any[]>('http://localhost:8000/api/operators');
+    return this.http.get<any[]>(`${environment.apiUrl}/operators`);
   }
 
   getProcesses() {
-    return this.http.get<any[]>('http://localhost:8000/api/processes');
+    return this.http.get<any[]>(`${environment.apiUrl}/processes`);
   }
 }
