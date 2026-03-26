@@ -67,6 +67,10 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          "options": {
+            "host": "0.0.0.0",
+            "allowedHosts": ["192.169.88.60", "localhost"]
+          },
           "configurations": {
             "production": {
               "buildTarget": "prueba:build:production"
